@@ -7,11 +7,48 @@ Following there is a list of common IDS Broker Connection Addresses as well as W
 Lastly, there are a list of useful contacts for requesting access or reporting problems on different IDS Brokers.
 
 * Connecting to a broker
+
+  There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key in an IDS Connector, and (3)         Requesting connection access to an IDS Broker. In the following we elucidade each one of those steps.
+
   * Requesting a trusted key
+
+   The communication between the different IDS components is performed using a secure communication channel. 
+   To be able to either connect or trasfer data between an IDS component one may request a trusted key to the IDS Consortium.
+   To do so, you may contact 
+
   * Configuring a the IDS Connector with a trusted key
-  * Requesting connection access to a IDS Broker
+
+With the trusted key in your hands, its time to set it up into your IDS Connector.
+The IDS Connector comes with a default setup for connecting to the test
+
+  * Request Connection Access
+
+Some of the IDS Brokers require IP unblockage to be able either to connect or even open the interface.
+If you are unable to connect even after setting up your key, this might be the problem.
+Next section compiles a list of brokers their resp. connection addresses and main mantainers.
+You can request a IP Unblockage writing to the broker's respective contact.
 
 * IDS Brokers Web Interface and Connection Address
 
+** Production Deployment
+
+Broker | Web Interface | Connection Address | Requires IP unblockage | Mantainer | Contact
+------------ | ------------- | ------------- | ------------- | ------------- | -------------
+Mobility Dataspace | https://mobilitydataspace.io/browse | https://ids.mobilitydataspace.io/infrastructure | NO | Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de 
+IDS Metadata Broker | https://broker.ids.isst.fraunhofer.de/browse | https://broker.ids.isst.fraunhofer.de/infrastructure | YES | Fraunhofer ISST | info@dataspace-connector.de
+
+** Test Deployment
+
+Broker | Web Interface | Connection Address | Version 
+------------ | ------------- | -------------
+Test Mobility Dataspace | https://broker.test.mobilitydataspace.io | https://test.ids.mobilitydataspace.io/connector | ?
 
 * Infrastructure & Contacts 
+
+** Developers
+
+Name | Contact | Component | Repository
+------------ | ------------- | -------------
+Julia Pampus | julia.pampus@isst.fraunhofer.de | IDS Connector | https://github.com/International-Data-Spaces-Association/DataspaceConnector
+Mattias Boeckmann | matthias.boeckmann@iais.fraunhofer.de | IDS Broker | https://github.com/International-Data-Spaces-Association/metadata-broker-open-core
+Johannes Lipp | johannes.lipp@fit.fraunhofer.de  | Information Model | ?
