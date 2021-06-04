@@ -8,9 +8,9 @@ Lastly, there are a list of useful contacts for requesting access or reporting p
 
 # Connecting to a broker
 
-There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key in an IDS Connector, and (3)         Requesting connection access to an IDS Broker. In the following we elucidade each one of those steps.
+There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key (certificate) in an IDS Connector, and (3)         Requesting connection access to an IDS Broker. In the following we elucidade each one of those steps.
 
-## Requesting a trusted key
+## Requesting a trusted key (certificate)
 
 The communication between the different IDS components is performed using a secure communication channel. 
 To be able to either connect or trasfer data between an IDS component one may request a trusted key to the IDS Consortium.
