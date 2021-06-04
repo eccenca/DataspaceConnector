@@ -23,8 +23,8 @@ The IDS Connector comes with a default setup for connecting to the test
 
   * Request Connection Access
 
-Some of the IDS Brokers require IP unblockage to be able either to connect or even open the interface.
-If you are unable to connect even after setting up your key, this might be the problem.
+Some of the IDS Brokers requires an IP unblockage or to be formaly notified before connections take place.
+If you are unable to connect even after setting up your trusted key, this might be the reason.
 Next section compiles a list of brokers their resp. connection addresses and main mantainers.
 You can request a IP Unblockage writing to the broker's respective contact.
 
@@ -40,7 +40,7 @@ IDS Metadata Broker | https://broker.ids.isst.fraunhofer.de/browse | https://bro
 ** Test Deployment
 
 Broker | Web Interface | Connection Address | Version 
------------- | ------------- | -------------
+------------ | ------------- | ------------- | -------------
 Test Mobility Dataspace | https://broker.test.mobilitydataspace.io | https://test.ids.mobilitydataspace.io/connector | ?
 
 * Infrastructure & Contacts 
@@ -48,7 +48,7 @@ Test Mobility Dataspace | https://broker.test.mobilitydataspace.io | https://tes
 ** Developers
 
 Name | Contact | Component | Repository
------------- | ------------- | -------------
+------------ | ------------- | ------------- | -------------
 Julia Pampus | julia.pampus@isst.fraunhofer.de | IDS Connector | https://github.com/International-Data-Spaces-Association/DataspaceConnector
 Mattias Boeckmann | matthias.boeckmann@iais.fraunhofer.de | IDS Broker | https://github.com/International-Data-Spaces-Association/metadata-broker-open-core
 Johannes Lipp | johannes.lipp@fit.fraunhofer.de  | Information Model | ?
