@@ -16,7 +16,7 @@ Lastly, there are a list of useful contacts for requesting access or reporting p
    To be able to either connect or trasfer data between an IDS component one may request a trusted key to the IDS Consortium.
    To do so, you may contact 
 
-## Configuring a the IDS Connector with a trusted key
+## Configuring an IDS Connector with a trusted key
 
 With the trusted key in your hands, its time to set it up into your IDS Connector.
 The IDS Connector comes with a default setup for connecting to the test
