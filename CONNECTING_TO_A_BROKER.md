@@ -1,4 +1,4 @@
-# Handling an IDS Broker Connection 
+IDS Broker Connection & Beyond
 
 In this page we breake down the International Data Space (IDS) infrastructure and modus operandi.
 This document is structured as follows.
