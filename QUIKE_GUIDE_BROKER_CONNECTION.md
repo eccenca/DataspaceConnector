@@ -24,9 +24,7 @@ In the image below, we show two configurations of the ```config.json``` file loc
 You should customize it adding resp. your trusted key and Connector ID.
 The customized configuration is shown on the left-hand side of the image while the default configuration on the right-hand side.
 The customized fields are also highlighted for easy reading.
-
-The customized fields are also highlighted for easy reading.
-There are three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
+To be able to connect to an IDS Broker using your trusted key and Connector ID, there are three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
 The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:connectorDeployMode``` to ```idsc:PRODUCTIVE_DEPLOYMENT```;
  * Change the ```@id``` of the ```ids:connectorDescription``` by the id of your IDS Connector preserving the path ```https://w3id.org/idsa/autogen/baseConnector/``` (see the example below), provided by the International Dataspace in the previous step;
