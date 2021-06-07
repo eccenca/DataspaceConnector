@@ -1,4 +1,4 @@
-# Quick Guide - IDS Broker Connection 
+# IDS Broker Connection - Quick Guide
 
 In this page we breake down the International Data Space (IDS) infrastructure and modus operandi.
 This document is structured as follows.
@@ -6,7 +6,7 @@ Next section details all necessary steps to initiate a connection to an IDS Brok
 Following there is a list of common IDS Broker Connection Addresses as well as Web Interfaces.
 Lastly, there are a list of useful contacts for requesting access or reporting problems on different IDS Brokers.
 
-# Connecting to a IDS broker
+# Connecting to a IDS Broker
 
 There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key (certificate) in an IDS Connector, and (3) Requesting connection access to an IDS Broker. In the following we elucidate each one of those steps.
 
@@ -24,7 +24,10 @@ In the image below, we show two configurations of the config.json file located i
 You should customize it adding resp. your trusted key and Connector ID.
 The customized configuration is shown on the left hand side of the image while the default configuration on the right hand side.
 The customized fields are also highlighted for easy reading.
-There are basically three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the @id of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
+
+The customized fields are also highlighted for easy reading.
+There are basically three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
+The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:connectorDeployMode``` to ```idsc:PRODUCTIVE_DEPLOYMENT```;
  * Change the ```@id``` of the ```ids:connectorDescription``` by the id of your IDS Connector preserving the path ```https://w3id.org/idsa/autogen/baseConnector/``` (see the example below), provided by the International Dataspace in the previous step;
  * Change the ```@id``` of the ```ids:keyStore``` to the key provided by the International Dataspace in the previous step.
