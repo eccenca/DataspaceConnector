@@ -57,7 +57,7 @@ You can request a <b>IP Unblockage</b> or <b>connection</b> allowance writing to
 
 Broker | Web Interface | Connection Address | Requires IP Unblockage | Version | Model Compatibility | Mantainer | Contact
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-Test Mobility Dataspace | https://broker.test.mobilitydataspace.io | https://test.ids.mobilitydataspace.io/infrastructure | YES | ? | ? | Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de 
+Test Mobility Dataspace | https://broker.test.mobilitydataspace.io/browse | https://test.ids.mobilitydataspace.io/infrastructure | YES | ? | ? | Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de 
 
 # Infrastructure & Contacts 
 
