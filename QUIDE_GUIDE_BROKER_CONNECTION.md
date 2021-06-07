@@ -57,7 +57,7 @@ IDS Metadata Broker | https://broker.ids.isst.fraunhofer.de/browse | https://bro
 
 ## Test Deployment
 
-Broker | Web Interface | Connection Address | Requires IP unblockage | Version | Model Compatibility | Mantainer | Contact
+Broker | Web Interface | Connection Address | Requires IP Unblockage | Version | Model Compatibility | Mantainer | Contact
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 Test Mobility Dataspace | https://broker.test.mobilitydataspace.io | https://test.ids.mobilitydataspace.io/connector | NO | ? | ? | Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de 
 
