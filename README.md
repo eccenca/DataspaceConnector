@@ -49,7 +49,7 @@ If you want to build and run locally, ensure that at least Java 11 is installed.
 
 For more details, see [here](https://international-data-spaces-association.github.io/DataspaceConnector/).
 
-### Connecting to a IDS Broker
+### Connecting to an IDS Broker
 
 To connect to a IDS Broker consult the [Broker Connection Quick Guide](./QUIDE_GUIDE_BROKER_CONNECTION.md). 
 
