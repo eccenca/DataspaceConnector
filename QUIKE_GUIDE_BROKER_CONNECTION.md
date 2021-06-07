@@ -24,11 +24,11 @@ In the image below, we show two configurations of the ```config.json``` file loc
 You should customize it adding resp. your trusted key and Connector ID.
 The customized configuration is shown on the left-hand side of the image while the default configuration on the right-hand side.
 The customized fields are also highlighted for easy reading.
-To be able to connect to an IDS Broker using your trusted key and Connector ID, there are three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
+To be able to connect to an IDS Broker using your ```trusted key``` and Connector ID, there are three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
 The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:connectorDeployMode``` to ```idsc:PRODUCTIVE_DEPLOYMENT```;
  * Change the ```@id``` of the ```ids:connectorDescription``` by the id of your IDS Connector preserving the path ```https://w3id.org/idsa/autogen/baseConnector/``` (see the example below), provided by the International Dataspace in the previous step;
- * Change the ```@id``` of the ```ids:keyStore``` to the key provided by the International Dataspace in the previous step.
+ * Change the ```@id``` of the ```ids:keyStore``` pointing to the file where your ```trusted key``` is stored (in our example ```file:///conf/ids.mykey.p12``` will tell the system to read the file from ```src/main/resources/conf/ids.mykey.p12```). The file should have been provided by the International Data Space in the last step.
 
 Optional (but important): The IDS Connector allows the configuration of ```Proxy```, in case your connector is hosted in a closed network.
 You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` accordingly. If this is not your case, you should remove the default parameters  ```ids:connectorProxy``` leaving only the parameter ```ids:noProxy``` (see the example below).
