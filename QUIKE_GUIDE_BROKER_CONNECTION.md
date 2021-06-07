@@ -32,7 +32,7 @@ The customized fields are also highlighted for easy reading.
 Optional (but important): The IDS Connector allows the configuration of ```Proxy```, in case your connector is hosted in a closed network.
 You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` accordingly. If this is not your case, you should remove the default parameters  ```ids:connectorProxy``` leaving only the parameter ```ids:noProxy``` (see the example below).
 
-Below we side by side an ```example``` configuration in the left hand side and the ```default``` configuration in the right handside. The customized fields are also highlighted for easy reading.
+Below we side by side an ```example``` configuration in the left hand side and the ```default``` configuration in the right handside. The customized fields are also highlighted for an easy reading.
 
 ![Example config.json](https://github.com/eccenca/DataspaceConnector/blob/develop/connector_configuration_example.png)
 
