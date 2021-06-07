@@ -20,7 +20,7 @@ To do so, you may contact
 
 With the trusted key in your hands, its time to set it up into your IDS Connector.
 The IDS Connector comes with a default setup for connecting to the test.
-In the image below, we show two configurations of the config.json file located in ```src/main/resources/conf``` directory.
+In the image below, we show two configurations of the ```config.json``` file located in ```src/main/resources/conf``` directory.
 You should customize it adding resp. your trusted key and Connector ID.
 The customized configuration is shown on the left hand side of the image while the default configuration on the right hand side.
 The customized fields are also highlighted for easy reading.
