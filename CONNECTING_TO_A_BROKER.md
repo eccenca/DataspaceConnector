@@ -1,4 +1,4 @@
-# IDS Broker Connection & Beyond
+# IDS Broker Connection Quick Guide
 
 In this page we breake down the International Data Space (IDS) infrastructure and modus operandi.
 This document is structured as follows.
@@ -6,7 +6,7 @@ Next section details all necessary steps to initiate a connection to an IDS Brok
 Following there is a list of common IDS Broker Connection Addresses as well as Web Interfaces.
 Lastly, there are a list of useful contacts for requesting access or reporting problems on different IDS Brokers.
 
-# Connecting to a broker
+# Connecting to a IDS broker
 
 There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key (certificate) in an IDS Connector, and (3)         Requesting connection access to an IDS Broker. In the following we elucidade each one of those steps.
 
