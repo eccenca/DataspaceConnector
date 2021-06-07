@@ -20,7 +20,7 @@ To do so, you may contact
 
 With the trusted key in your hands, its time to set it up into your IDS Connector.
 The IDS Connector comes with a default setup for connecting to the test.
-In the image below, we show two configurations of the config.json file located in src/main/resources/conf directory.
+In the image below, we show two configurations of the config.json file located in ```src/main/resources/conf``` directory.
 You should customize it adding resp. your trusted key and Connector ID.
 The customized configuration is shown on the left hand side of the image while the default configuration on the right hand side.
 The customized fields are also highlighted for easy reading.
@@ -33,9 +33,9 @@ The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:keyStore``` to the key provided by the International Dataspace in the previous step.
 
 Optional (but important): The IDS Connector allows the configuration of ```Proxy```, in case your connector is hosted in a closed network.
-You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` accordingly. If this is not your case, you should remove the default parameter  ```ids:connectorProxy``` leaving only the parameter ```ids:noProxy``` (see the example below).
+You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` accordingly. If this is not your case, you should remove the default parameters  ```ids:connectorProxy``` leaving only the parameter ```ids:noProxy``` (see the example below).
 
-Below we side by side an example of configuration in the left hand side and the default configuration in the right handside.
+Below we side by side an ```example``` configuration in the left hand side and the ```default``` configuration in the right handside.
 
 
 
@@ -44,7 +44,7 @@ Below we side by side an example of configuration in the left hand side and the 
 Some of the IDS Brokers requires an IP unblockage or formaly notifiation before a connection take place.
 If you are unable to connect even after setting up your trusted key, this might be the reason.
 Next section compiles a list of brokers their resp. connection addresses and main mantainers.
-You can request a IP unblockage writing to the broker's respective contact.
+You can request a IP unblockage writing to the Broker's respective contact.
 
 # IDS Brokers
 
