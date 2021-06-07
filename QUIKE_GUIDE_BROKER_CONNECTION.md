@@ -23,7 +23,6 @@ The IDS Connector comes with a default setup for connecting to the test.
 In the image below, we show two configurations of the ```config.json``` file located in ```src/main/resources/conf``` directory.
 You should customize it adding resp. your trusted key and Connector ID.
 The customized configuration is shown on the left-hand side of the image while the default configuration on the right-hand side.
-The customized fields are also highlighted for easy reading.
 To be able to connect to an IDS Broker using your ```trusted key``` and Connector ID, there are three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
 The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:connectorDeployMode``` to ```idsc:PRODUCTIVE_DEPLOYMENT```;
@@ -33,7 +32,7 @@ The customized fields are also highlighted for easy reading.
 Optional (but important): The IDS Connector allows the configuration of ```Proxy```, in case your connector is hosted in a closed network.
 You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` accordingly. If this is not your case, you should remove the default parameters  ```ids:connectorProxy``` leaving only the parameter ```ids:noProxy``` (see the example below).
 
-Below we side by side an ```example``` configuration in the left hand side and the ```default``` configuration in the right handside.
+Below we side by side an ```example``` configuration in the left hand side and the ```default``` configuration in the right handside. The customized fields are also highlighted for easy reading.
 
 ![Example config.json](https://github.com/eccenca/DataspaceConnector/blob/develop/connector_configuration_example.png)
 
