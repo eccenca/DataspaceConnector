@@ -10,13 +10,13 @@ Lastly, there is a list of useful contacts for requesting access or reporting pr
 
 There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key (certificate) in an IDS Connector, and (3) Requesting connection access to an IDS Broker. In the following, we elucidate each of those steps.
 
-## Requesting a trusted key (certificate) and Connector ID
+## 1st - Requesting a trusted key (certificate) and Connector ID
 
 The communication between the different IDS components is performed using a secure communication channel. 
 To be able to either connect or transfer data between an IDS component one may request a trusted key to the IDS Consortium.
 To do so, you may contact 
 
-## Configuring an IDS Connector with a trusted key and Connector ID
+## 2nd - Configuring an IDS Connector with a trusted key and Connector ID
 
 With the trusted key in your hands, it's time to set it up into your IDS Connector.
 The IDS Connector comes with a default setup for connecting to the test.
@@ -28,7 +28,7 @@ To be able to connect to an IDS Broker using your ```trusted key``` and Connecto
 The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:connectorDeployMode``` to ```idsc:PRODUCTIVE_DEPLOYMENT```;
  * Change the ```@id``` of the ```ids:connectorDescription``` by the id of your IDS Connector preserving the path ```https://w3id.org/idsa/autogen/baseConnector/``` (see the example below), provided by the International Dataspace in the previous step;
- * Change the ```@id``` of the ```ids:keyStore``` pointing to the file where your ```trusted key``` is stored (in our example ```file:///conf/ids.mykey.p12``` will tell the system to read the file from ```src/main/resources/conf/ids.mykey.p12```). The file should have been provided by the International Data Space in the last step.
+ * Change the ```@id``` of the ```ids:keyStore``` pointing to the file where your ```trusted key``` is stored (in our example ```file:///conf/ids.mykey.p12``` will tell the system to read the file from ```src/main/resources/conf/ids.mykey.p12```). The file should have been provided by the International Data Space in the previous step.
 
 Optional (but important): The IDS Connector allows the configuration of ```Proxy```, in case your connector is hosted in a closed network.
 You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` accordingly. If this is not your case, you should remove the default parameters  ```ids:connectorProxy``` leaving only the parameter ```ids:noProxy``` (see the example below).
@@ -37,7 +37,7 @@ Below we side by side an ```example``` configuration in the left hand side and t
 
 ![Example config.json](https://github.com/eccenca/DataspaceConnector/blob/develop/connector_configuration_example.png)
 
-## Requesting Connection Access
+## 3rd - Requesting Connection Access
 
 Some of the IDS Brokers requires an <b>IP Unblockage</b> or a <b>formal notification</b> before a connection takes place.
 If you are unable to connect even after setting up your trusted key, this might be the reason.
