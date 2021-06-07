@@ -50,7 +50,7 @@ You can request a IP unblockage writing to the Broker's respective contact.
 
 ## Production Deployment
 
-| Broker | Web Interface | Connection Address | Requires IP unblockage | Version | Model Compatibility | Mantainer | Contact |
+| Broker | Web Interface | Connection Address | Requires IP Unblockage | Version | Model Compatibility | Mantainer | Contact |
 | ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Mobility Dataspace | https://mobilitydataspace.io/browse | https://ids.mobilitydataspace.io/infrastructure |  YES | ? | ? |Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de |
 | IDS Metadata Broker | https://broker.ids.isst.fraunhofer.de/browse | https://broker.ids.isst.fraunhofer.de/infrastructure |  YES | ? | ? | Fraunhofer ISST | info@dataspace-connector.de |
