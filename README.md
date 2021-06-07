@@ -51,7 +51,7 @@ For more details, see [here](https://international-data-spaces-association.githu
 
 ### Connecting to a IDS Broker
 
-To connect to a IDS Broker consult our Broker connection [Quick Guide](./QUIDE_GUIDE_BROKER_CONNECTION.md). 
+To connect to a IDS Broker consult the [Broker Connection Quick Guide](./QUIDE_GUIDE_BROKER_CONNECTION.md). 
 
 ## Contributing
 
