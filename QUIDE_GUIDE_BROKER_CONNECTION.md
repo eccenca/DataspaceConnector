@@ -37,7 +37,7 @@ You can setup the ```Proxy``` changing the parameter ```ids:connectorProxy``` ac
 
 Below we side by side an ```example``` configuration in the left hand side and the ```default``` configuration in the right handside.
 
-
+![Example config.json](https://github.com/eccenca/DataspaceConnector/blob/develop/connector_configuration_example.png)
 
 ## Requesting Connection Access
 
