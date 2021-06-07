@@ -41,10 +41,10 @@ Below we side by side an ```example``` configuration in the left hand side and t
 
 ## Requesting Connection Access
 
-Some of the IDS Brokers requires an IP unblockage or formaly notifiation before a connection take place.
+Some of the IDS Brokers requires an <b>IP Unblockage</b> or a formal notification before a connection takes place.
 If you are unable to connect even after setting up your trusted key, this might be the reason.
-Next section compiles a list of brokers their resp. connection addresses and main mantainers.
-You can request a IP unblockage writing to the Broker's respective contact.
+Next section compiles a list of Brokers their resp. connection addresses and main mantainers.
+You can request a <b>IP Unblockage</b> writing to the Broker's respective contact.
 
 # IDS Brokers
 
