@@ -1,4 +1,4 @@
-# IDS Broker Connection Quick Guide
+# IDS Broker Connection the Quick Guide
 
 In this page we breake down the International Data Space (IDS) infrastructure and modus operandi.
 This document is structured as follows.
