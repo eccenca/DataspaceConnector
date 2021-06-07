@@ -1,32 +1,32 @@
 # Broker Connection Quick Guide
 
-In this page we breake down the International Data Space (IDS) infrastructure and modus operandi.
+On this page, we break down the International Data Space (IDS) infrastructure and modus operandi.
 This document is structured as follows.
 Next section details all necessary steps to initiate a connection to an IDS Broker using the IDS Connector.
 Following, there is a list of common IDS Broker Connection Addresses as well as Web Interfaces.
-Lastly, there are a list of useful contacts for requesting access or reporting problems on different IDS Brokers.
+Lastly, there is a list of useful contacts for requesting access or reporting problems on different IDS Brokers.
 
-# Connecting to a IDS Broker
+# Connecting to an IDS Broker
 
-There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key (certificate) in an IDS Connector, and (3) Requesting connection access to an IDS Broker. In the following we elucidate each of those steps.
+There are three steps for connecting to an IDS Broker: (1) request and register your trusted key, (2) Setting up a trusted key (certificate) in an IDS Connector, and (3) Requesting connection access to an IDS Broker. In the following, we elucidate each of those steps.
 
 ## Requesting a trusted key (certificate) and Connector ID
 
 The communication between the different IDS components is performed using a secure communication channel. 
-To be able to either connect or trasfer data between an IDS component one may request a trusted key to the IDS Consortium.
+To be able to either connect or transfer data between an IDS component one may request a trusted key to the IDS Consortium.
 To do so, you may contact 
 
 ## Configuring an IDS Connector with a trusted key and Connector ID
 
-With the trusted key in your hands, its time to set it up into your IDS Connector.
+With the trusted key in your hands, it's time to set it up into your IDS Connector.
 The IDS Connector comes with a default setup for connecting to the test.
 In the image below, we show two configurations of the ```config.json``` file located in ```src/main/resources/conf``` directory.
 You should customize it adding resp. your trusted key and Connector ID.
-The customized configuration is shown on the left hand side of the image while the default configuration on the right hand side.
+The customized configuration is shown on the left-hand side of the image while the default configuration on the right-hand side.
 The customized fields are also highlighted for easy reading.
 
 The customized fields are also highlighted for easy reading.
-There are basically three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
+There are three fields that should be changed: (1) the ```@id``` of the ```ids:connectorDeployMode```, (2) the ```@id``` of the ```ids:connectorDescription```, (3) the ```@id``` of the ```ids:keyStore``` as follows: 
 The customized fields are also highlighted for easy reading.
  * Change the ```@id``` of the ```ids:connectorDeployMode``` to ```idsc:PRODUCTIVE_DEPLOYMENT```;
  * Change the ```@id``` of the ```ids:connectorDescription``` by the id of your IDS Connector preserving the path ```https://w3id.org/idsa/autogen/baseConnector/``` (see the example below), provided by the International Dataspace in the previous step;
