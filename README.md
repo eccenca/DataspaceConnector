@@ -35,8 +35,9 @@ usage policy patterns.
 </h3>
 
 ***
-
 ## Quick Start
+
+### Initializing
 
 If you want to build and run locally, ensure that at least Java 11 is installed. Then, follow these steps:
 
@@ -47,6 +48,10 @@ If you want to build and run locally, ensure that at least Java 11 is installed.
     be accessed at https://localhost:8080/api. The Swagger UI can be found at https://localhost:8080/api/docs.
 
 For more details, see [here](https://international-data-spaces-association.github.io/DataspaceConnector/).
+
+### Connecting to an IDS Broker
+
+To connect to an IDS Broker consult the [Broker Connection Quick Guide](./QUIKE_GUIDE_BROKER_CONNECTION.md). 
 
 ## Contributing
 
