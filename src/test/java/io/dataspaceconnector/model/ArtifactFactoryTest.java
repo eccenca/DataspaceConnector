@@ -19,14 +19,22 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.dataspaceconnector.model.artifact.ArtifactDesc;
+import io.dataspaceconnector.model.artifact.ArtifactFactory;
+import io.dataspaceconnector.model.artifact.ArtifactImpl;
+import io.dataspaceconnector.model.artifact.LocalData;
+import io.dataspaceconnector.model.artifact.RemoteData;
+import io.dataspaceconnector.model.auth.ApiKey;
+import io.dataspaceconnector.model.auth.AuthenticationDesc;
+import io.dataspaceconnector.model.auth.BasicAuth;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -375,7 +383,8 @@ public class ArtifactFactoryTest {
         // Nothing to arrange here.
 
         /* ACT && ASSERT */
-        assertThrows(IllegalArgumentException.class, () -> factory.update(null, new ArtifactDesc()));
+        assertThrows(IllegalArgumentException.class, () -> factory.update(null,
+                new ArtifactDesc()));
     }
 
     @Test
@@ -392,7 +401,7 @@ public class ArtifactFactoryTest {
      */
 
     @Test
-    public void create_num_accessed_is_0 () {
+    public void create_num_accessed_is_0() {
         /* ARRANGE */
         // Nothing to arrange here.
 
@@ -458,7 +467,7 @@ public class ArtifactFactoryTest {
         factory.update(artifact, new ArtifactDesc());
 
         /* ASSERT */
-        assertTrue(((ArtifactImpl)artifact).getData() instanceof LocalData);
+        assertTrue(((ArtifactImpl) artifact).getData() instanceof LocalData);
     }
 
     @Test
@@ -473,7 +482,7 @@ public class ArtifactFactoryTest {
         factory.update(artifact, desc);
 
         /* ASSERT */
-        assertTrue(((ArtifactImpl)artifact).getData() instanceof RemoteData);
+        assertTrue(((ArtifactImpl) artifact).getData() instanceof RemoteData);
     }
 
     /**
@@ -490,7 +499,7 @@ public class ArtifactFactoryTest {
         final var result = (ArtifactImpl) factory.create(desc);
 
         /* ASSERT */
-        assertNull(((LocalData)result.getData()).getValue());
+        assertNull(((LocalData) result.getData()).getValue());
     }
 
     @Test
@@ -505,7 +514,7 @@ public class ArtifactFactoryTest {
         factory.update(artifact, desc);
 
         /* ASSERT */
-        assertTrue(Arrays.equals(desc.getValue().getBytes(StandardCharsets.UTF_16), ((LocalData)artifact.getData()).getValue()));
+        assertArrayEquals(desc.getValue().getBytes(StandardCharsets.UTF_16), ((LocalData) artifact.getData()).getValue());
     }
 
     @Test
@@ -551,159 +560,89 @@ public class ArtifactFactoryTest {
         factory.update(artifact, desc);
 
         /* ASSERT */
-        final var data = (RemoteData)((ArtifactImpl)artifact).getData();
+        final var data = (RemoteData) ((ArtifactImpl) artifact).getData();
         assertEquals(desc.getAccessUrl(), data.getAccessUrl());
     }
 
     /**
-     * username
+     * basicAuth
      */
 
     @Test
-    public void create_nullUsername_nullUsername() throws MalformedURLException {
+    public void create_basicAuth_emptyAuthentication() throws MalformedURLException {
         /* ARRANGE */
         final var desc = new ArtifactDesc();
         desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setUsername(null);
+        desc.setBasicAuth(null);
 
         /* ACT */
         final var result = factory.create(desc);
 
         /* ASSERT */
-        final var data = (RemoteData)((ArtifactImpl)result).getData();
-        assertNull(data.getUsername());
+        final var data = (RemoteData) ((ArtifactImpl) result).getData();
+        Assertions.assertTrue(data.getAuthentication().isEmpty());
     }
 
     @Test
-    public void update_differentUsername_setUsername() throws MalformedURLException {
+    public void update_differentBasicAuth_setBasicAuth() throws MalformedURLException {
         /* ARRANGE */
         final var desc = new ArtifactDesc();
         desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setUsername("Random Username");
+        desc.setBasicAuth(new AuthenticationDesc("Random Username", "Random Password"));
 
         final var artifact = factory.create(desc);
 
         final var updateDesc = new ArtifactDesc();
         updateDesc.setAccessUrl(new URL("https://localhost:8080/"));
-        updateDesc.setUsername("Random Different Username");
+        updateDesc.setBasicAuth(new AuthenticationDesc("Random Different Username", "Random Password"));
 
         /* ACT */
         factory.update(artifact, updateDesc);
 
         /* ASSERT */
-        final var data = (RemoteData)((ArtifactImpl)artifact).getData();
-        assertEquals(updateDesc.getUsername(), data.getUsername());
-    }
-
-    @Test
-    public void update_differentUsername_returnTrue() throws MalformedURLException {
-        /* ARRANGE */
-        final var desc = new ArtifactDesc();
-        desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setUsername("Random Username");
-
-        final var artifact = factory.create(desc);
-
-        final var updateDesc = new ArtifactDesc();
-        updateDesc.setAccessUrl(new URL("https://localhost:8080/"));
-        updateDesc.setUsername("Random Different Username");
-
-        /* ACT */
-        final var result = factory.update(artifact, updateDesc);
-
-        /* ASSERT */
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void update_sameUsername_returnFalse() throws MalformedURLException {
-        /* ARRANGE */
-        final var desc = new ArtifactDesc();
-        desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setUsername("Random Username");
-
-        final var artifact = factory.create(desc);
-
-        /* ACT */
-        final var result = factory.update(artifact, desc);
-
-        /* ASSERT */
-        Assertions.assertFalse(result);
+        final var data = (RemoteData) ((ArtifactImpl) artifact).getData();
+        assertEquals(new BasicAuth(updateDesc.getBasicAuth().getKey(), updateDesc.getBasicAuth().getValue()),
+                     data.getAuthentication().get(0));
     }
 
     /**
-     * password
+     * apiKey
      */
 
     @Test
-    public void create_nullPassword_nullPassword() throws MalformedURLException {
+    public void create_nullApiKey_nullApiKey() throws MalformedURLException {
         /* ARRANGE */
         final var desc = new ArtifactDesc();
         desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setPassword(null);
+        desc.setApiKey(null);
 
         /* ACT */
         final var result = factory.create(desc);
 
         /* ASSERT */
-        final var data = (RemoteData)((ArtifactImpl)result).getData();
-        assertNull(data.getPassword());
+        final var data = (RemoteData) ((ArtifactImpl) result).getData();
+        Assertions.assertTrue(data.getAuthentication().isEmpty());
     }
 
     @Test
-    public void update_differentPassword_setPassword() throws MalformedURLException {
+    public void update_differentApiKey_setApiKey() throws MalformedURLException {
         /* ARRANGE */
         final var desc = new ArtifactDesc();
         desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setPassword("Random Password");
+        desc.setApiKey(new AuthenticationDesc("Random Username", "Random Password"));
 
         final var artifact = factory.create(desc);
 
         final var updateDesc = new ArtifactDesc();
         updateDesc.setAccessUrl(new URL("https://localhost:8080/"));
-        updateDesc.setPassword("Random Different Password");
+        updateDesc.setApiKey(new AuthenticationDesc("Random Username", "Random Different Password"));
 
         /* ACT */
         factory.update(artifact, updateDesc);
 
         /* ASSERT */
-        final var data = (RemoteData)((ArtifactImpl)artifact).getData();
-        assertEquals(updateDesc.getPassword(), data.getPassword());
-    }
-
-    @Test
-    public void update_differentPassword_returnTrue() throws MalformedURLException {
-        /* ARRANGE */
-        final var desc = new ArtifactDesc();
-        desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setPassword("Random Password");
-
-        final var artifact = factory.create(desc);
-
-        final var updateDesc = new ArtifactDesc();
-        updateDesc.setAccessUrl(new URL("https://localhost:8080/"));
-        updateDesc.setPassword("Random Different Password");
-
-        /* ACT */
-        final var result = factory.update(artifact, updateDesc);
-
-        /* ASSERT */
-        Assertions.assertTrue(result);
-    }
-
-    @Test
-    public void update_samePassword_returnFalse() throws MalformedURLException {
-        /* ARRANGE */
-        final var desc = new ArtifactDesc();
-        desc.setAccessUrl(new URL("https://localhost:8080/"));
-        desc.setPassword("Random Password");
-
-        final var artifact = factory.create(desc);
-
-        /* ACT */
-        final var result = factory.update(artifact, desc);
-
-        /* ASSERT */
-        Assertions.assertFalse(result);
+        final var data = (RemoteData) ((ArtifactImpl) artifact).getData();
+        assertEquals(new ApiKey(updateDesc.getApiKey().getKey(), updateDesc.getApiKey().getValue()),
+                     data.getAuthentication().get(0));
     }
 }

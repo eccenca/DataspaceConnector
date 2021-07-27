@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
@@ -35,6 +36,8 @@ public class RequestWrapperTest {
         /* ARRANGE */
         final var request = new MockHttpServletRequest();
         request.setContent("HELLO".getBytes(StandardCharsets.UTF_8));
+        request.setCharacterEncoding(String.valueOf(Charset.defaultCharset()));
+
         final var wrapper = new RequestWrapper(request);
 
         /* ACT */
@@ -49,6 +52,7 @@ public class RequestWrapperTest {
         /* ARRANGE */
         final var request = new MockHttpServletRequest();
         request.setContent("HELLO".getBytes(StandardCharsets.UTF_8));
+        request.setCharacterEncoding(String.valueOf(Charset.defaultCharset()));
         final var wrapper = new RequestWrapper(request);
 
         /* ACT */
@@ -65,10 +69,12 @@ public class RequestWrapperTest {
         /* ARRANGE */
         final var request = new MockHttpServletRequest();
         request.setContent("HELLO".getBytes(StandardCharsets.UTF_8));
+        request.setCharacterEncoding(String.valueOf(Charset.defaultCharset()));
         final var wrapper = new RequestWrapper(request);
         wrapper.getRequestBody();
 
-        final var reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream("HELLO".getBytes(StandardCharsets.UTF_8))));
+        final var reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(
+                "HELLO".getBytes(StandardCharsets.UTF_8))));
 
         /* ACT && ASSERT */
         final var result = wrapper.getReader();
@@ -77,7 +83,7 @@ public class RequestWrapperTest {
             final var x = result.read();
             final var y = reader.read();
             assertEquals(x, y);
-            if(x == -1 || y == -1) {
+            if (x == -1 || y == -1) {
                 break;
             }
         }

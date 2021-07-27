@@ -11,7 +11,7 @@
   <a href="mailto:info@dataspace-connector.de">Contact</a> •
   <a href="#contributing">Contribute</a> •
   <a href="https://international-data-spaces-association.github.io/DataspaceConnector/">Docs</a> •
-  <a href="https://github.com/FraunhoferISST/DataspaceConnector/issues">Issues</a> •
+  <a href="https://github.com/International-Data-Spaces-Association/DataspaceConnector/issues">Issues</a> •
   <a href="#license">License</a>
 </p>
 
@@ -19,7 +19,7 @@
 The Dataspace Connector is an implementation of an IDS connector component following the
 [IDS Reference Architecture Model](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf).
 It integrates the [IDS Information Model](https://github.com/International-Data-Spaces-Association/InformationModel)
-and uses the [IDS Connector Framework](https://github.com/FraunhoferISST/IDS-Connector-Framework)
+and uses the [IDS Messaging Services](https://github.com/International-Data-Spaces-Association/IDS-Messaging-Services)
 for IDS functionalities and message handling.
 The core component in this repository provides a REST API for loading, updating, and deleting
 resources with local or remote data enriched by its metadata. It supports IDS conform message
@@ -30,7 +30,7 @@ usage policy patterns.
 
 <h3 align="center" >
   <a href="https://international-data-spaces-association.github.io/DataspaceConnector/">
-    Manual & Documentation
+    D O C U M E N T A T I O N
   </a>
 </h3>
 
@@ -49,9 +49,12 @@ If you want to build and run locally, ensure that at least Java 11 is installed.
 
 For more details, see [here](https://international-data-spaces-association.github.io/DataspaceConnector/).
 
+For Docker or Kubernetes deployment as well as full setup with Configurationmanager and UI, see [here](https://github.com/International-Data-Spaces-Association/IDS-Deployment-Examples/tree/main/dataspace-connector).
+
 ### Connecting to an IDS Broker
 
-To connect to an IDS Broker consult the [Broker Connection Quick Guide](./QUIKE_GUIDE_BROKER_CONNECTION.md). 
+To connect to an IDS Broker consult the [Broker Connection Quick Guide](./QUIKE_GUIDE_BROKER_CONNECTION.md).
+
 
 ## Contributing
 
@@ -71,6 +74,7 @@ The core development is driven by
 * [Ronja Quensel](https://github.com/ronjaquensel), [Fraunhofer ISST](https://www.isst.fraunhofer.de/en.html)
 
 with significant contributions, comments, and support by (in alphabetical order):
+* [Fabian Bruckner](https://github.com/fabianbruckner), [Fraunhofer ISST](https://www.isst.fraunhofer.de/en.html)
 * [Haydar Qarawlus](https://github.com/hqarawlus), [Fraunhofer ISST](https://www.isst.fraunhofer.de/en.html)
 * [Johannes Pieperbeck](https://github.com/jpieperbeck), [Fraunhofer ISST](https://www.isst.fraunhofer.de/en.html)
 * [René Brinkhege](https://github.com/renebrinkhege), [Fraunhofer ISST](https://www.isst.fraunhofer.de/en.html)

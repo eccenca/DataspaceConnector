@@ -15,6 +15,9 @@
  */
 package io.dataspaceconnector.config;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,19 +34,33 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  */
 @Configuration
 @EnableWebSecurity
+@Getter(AccessLevel.NONE)
+@Setter(AccessLevel.NONE)
 public class MultipleEntryPointsSecurityConfig {
 
     /**
-     * Username defined in application.properties.
+     * Admin username defined in application.properties.
      */
     @Value("${spring.security.user.name}")
-    private String username;
+    private String adminUsername;
 
     /**
-     * Password defined in application.properties.
+     * Admin password defined in application.properties.
      */
     @Value("${spring.security.user.password}")
-    private String password;
+    private String adminPassword;
+
+    /**
+     * App username defined in application.properties.
+     */
+    @Value("${spring.security.app.name}")
+    private String appUsername;
+
+    /**
+     * App password defined in application.properties.
+     */
+    @Value("${spring.security.app.password}")
+    private String appPassword;
 
     /**
      * Bean setting up an default admin.
@@ -53,10 +70,12 @@ public class MultipleEntryPointsSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         final var manager = new InMemoryUserDetailsManager();
-        manager.createUser(User
-                .withUsername(username)
-                .password(encoder().encode(password))
+        manager.createUser(User.withUsername(adminUsername)
+                .password(encoder().encode(adminPassword))
                 .roles("ADMIN").build());
+        manager.createUser(User.withUsername(appUsername)
+                .password(encoder().encode(appPassword))
+                .roles("APP").build());
         return manager;
     }
 

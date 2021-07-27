@@ -19,6 +19,8 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.dataspaceconnector.model.rule.ContractRuleDesc;
+import io.dataspaceconnector.model.rule.ContractRuleFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -366,7 +368,8 @@ public class ContractRuleFactoryTest {
         // Nothing to arrange here.
 
         /* ACT && ASSERT */
-        assertThrows(IllegalArgumentException.class, () -> factory.update(null, new ContractRuleDesc()));
+        assertThrows(IllegalArgumentException.class, () -> factory.update(null,
+                new ContractRuleDesc()));
     }
 
     @Test

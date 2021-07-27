@@ -19,6 +19,8 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.dataspaceconnector.model.representation.RepresentationDesc;
+import io.dataspaceconnector.model.representation.RepresentationFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -514,7 +516,8 @@ public class RepresentationFactoryTest {
         // Nothing to arrange here.
 
         /* ACT && ASSERT */
-        assertThrows(IllegalArgumentException.class, () -> factory.update(null, new RepresentationDesc()));
+        assertThrows(IllegalArgumentException.class, () -> factory.update(null,
+                new RepresentationDesc()));
     }
 
     @Test

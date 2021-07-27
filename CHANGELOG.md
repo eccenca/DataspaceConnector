@@ -1,25 +1,138 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [5.x.x] - XXXX-XX-XX
+## [6.0.0] - 2021-07-20
 
 ### Added
- - Add telemetry collection via Jaeger.
- 
+- Provide REST endpoint for full-text search at the IDS Broker: `/ids/search`.
+- Check if the issuer connector of an artifact request does correspond to the signed consumer of the
+  transfer contract.
+- Integrate Camel-Spring-Boot version 3.10.0.
+- Integrate [DSC Camel Instance repository](https://github.com/International-Data-Spaces-Association/DSC-Camel-Instance).
+  * Provide REST endpoints for adding and removing Camel routes and Spring beans at runtime.
+- Send `ArtifactRequest` and `ArtifactResponse` messages to the Clearing House.
+- Allow artifacts pointing to backend systems to be created with both BasicAuth and API key
+  authentication.
+- Integrate IDSCPv2 for IDS communication.
+  * Add property `idscp2.enabled` for enabling and disabling IDSCPv2 server. Is disabled by default.
+  * Add properties for configuring keystore and truststore for IDSCPv2.
+  * When enabling IDSCPv2, a valid IDS certificate is required!
+- Implement subscription transfer pattern.
+  * Add user profile for apps/services with access to subscription REST endpoints.
+  * Allow subscriptions for offered & requested resources, representations, and artifacts via REST
+    endpoints.
+  * Create `PUT /notify` endpoint to manually notify subscribers (ids & non-ids).
+  * Automatically notify subscribers on entity updates.
+  * Create REST endpoints for sending (un-)subscriptions via ids messages.
+- Integrate [IDS ConfigManager repository](https://github.com/International-Data-Spaces-Association/IDS-ConfigurationManager).
+  * Extend data model and REST API by entities: auth, broker, configuration, datasource, endpoint,
+    keystore, proxy, route, and truststore.
+  * Add Camel error handler for propagating errors in routes.
+- Persist connector configuration to database.
+  * Load configuration from database.
+  * Choose active configuration from list of configurations.
+
 ### Changed
- - Replace deprecated JPA calls (`getOne` -> `getById`).
- - Increase length restriction for URIs in database columns to 2048.
+- Replace IDS Connector Framework v5.0.4 by IDS Messaging Services v2.0.1.
+- Edit response codes and response content for the following endpoints: `/ids/connector/unavailable`,
+  `/ids/connector/update`, `/ids/resource/unavailable`, `/ids/resource/update`, `/ids/query`.
+- Move implementation for sending IDS query, connector, and resource messages to
+  `GlobalMessageService`.
+- Handle DAT retrieving errors in `PRODUCTIVE_DEPLOYMENT` with status code 500 and a corresponding
+  message.
+- Artifact PUT `/api/data` changed response code from Ok (200) to NoContent (204).
+- Change naming of the resource's license attribute from `licence` to `license`.
+- Change `AbstractEntity` to `Entity` and `NamedEntity`.
+- Refactor message handlers using Camel routes.
+- Increase postgres version to 42.2.23.
+- Increase jackson version to 2.12.4.
+- Increase equalsverifier from 3.6.1 to 3.7.0.
+- Increase spotbugs from 4.2.3 to 4.3.0.
+- Increase spring version from 2.5.2 to 2.5.3.
+
+## [5.2.1] - 2021-07-02
+
+### Changed
+- Increase spring-boot version to 2.5.2.
+- Increase checkstyle version to 8.44.
+- Increase pmd version to 6.36.0.
 
 ### Fixed
- - Representations have now only one self-link.
+- Make bootstrapping feature optional. It can be enabled in the `application.properties`.
+
+## [5.2.0] - 2021-06-23
+
+### Added
+- Add `BootstrapConfiguration`.
+  * Allow registering ids catalogs, offered resources, representations, artifacts, and contract
+    offers during start up.
+  * Allow registering offered resources as part of the catalogs to brokers.
+- Add `CatalogTemplate` and matching mapping/build functions.
+- Add a method to `AbstractIdsBuilder` that allows to create elements with a custom base URI.
+- Add `bootstrap.path` to `application.properties` to define the base path where bootstrapping data
+  can be found.
+
+### Changed
+- Change `ConnectorService` to use the connector's ID from `config.json` when
+  `getAllCatalogsWithOfferedResources` is called.
+
+### Fixed
+- Fixed missing IDS context in `/api/examples/policy`.
+- Disable autocommit on database transactions.
+- Remove encoding from optional path segment in `HttpService`.
+
+### Changed
+- Increase IDS Framework version to 5.0.4.
+- Update default Infomodel version to 4.0.10.
+- Increase postgres version to 42.2.22.
+
+## [5.1.2] - 2021-06-14
+
+### Fixed
+- Fixed deletion of artifact data before the set time.
+- Fixed tags with different descriptions in openapi schema.
+- Fixed missing paging information in openapi schema.
+
+### Changed
+- Increase postgresql version to 42.2.21.
+- Increase spring-boot version to 2.5.1.
+
+## [5.1.1] - 2021-06-09
+
+### Fixed
+- Add missing hateoas information in openapi schema.
+
+## [5.1.0] - 2021-06-07
+
+### Added
+- Add telemetry collection via Jaeger.
+
+### Changed
+- Replace deprecated JPA calls (`getOne` -> `getById`).
+- Increase length restriction for URIs in database columns to 2048.
+- Increase modelmapper version to 2.4.4.
+- Increase equalsverifier version to 3.6.1.
+- Increase spring-openApi-security version to 1.5.9.
+- Increase spring-openapi-ui version to 1.5.9.
+- Increase maven-javadoc-plugin version to 3.3.0.
+- Increase spring-boot version to 2.5.0.
+- Increase checkstyle version to 8.43.
+- Increase pmd version to 6.35.0.
+- Increase pitest version from 1.6.6 to 1.6.7.
+
+### Fixed
+- Representations have now only one self-link.
+- Set Basic Auth Header on (provider) backend calls.
+- Ignore empty extension `/**` on `GET **/artifacts/{id}/data/**`.
+- `GET **/artifacts/{id}/data` and `POST **/artifacts/{id}/data` will now return the same output.
 
 ## [5.0.2] - 2021-05-25
 
 ### Changed
- - Make the Clearing House url setting optional in `application.properties`.
+- Make the Clearing House url setting optional in `application.properties`.
 
 ### Fixed
- - Persist URIs as strings in database.
+- Persist URIs as strings in database.
 
 ## [5.0.1] - 2021-05-19
 
@@ -54,6 +167,7 @@ All notable changes to this project will be documented in this file.
   * Handle out contract agreements for multiple artifacts (targets) within one negotiation sequence.
   * Restrict agreement processing to confirmed agreements.
   * Add relation between artifacts and agreements.
+- Add possibility to subscribe backend URLs for updates to a requested resource.
 
 ### Changed
 - Support of IDS Infomodel v4.0.4 (direct import in `pom.xml`).
