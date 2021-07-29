@@ -1,6 +1,7 @@
 # Example of POST request
 
 It is also possible to consume data from the IDS Connector using CURL.
+
 The example below shows an example of curl request:
 
 ```
