@@ -241,9 +241,9 @@ def remove_offer(offer_href):
 # Cleaning current offers
 
 current_offers_response = get_catalogs()
-current_offers = json.loads(current_offers_response.text)
-for current_offer in current_offers["_embedded"]["catalogs"]:
-    offer_href = current_offer["_links"]["self"]["href"]
+current_catalogs = json.loads(current_offers_response.text)
+for current_catalog in current_catalogs["_embedded"]["catalogs"]:
+    offer_href = current_catalog["_links"]["self"]["href"]
     print("Removing catalog " + offer_href)
     remove_offer(offer_href)
 
