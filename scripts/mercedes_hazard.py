@@ -32,8 +32,8 @@ requests.packages.urllib3.disable_warnings()
 # Connector Address
 connectorUrl = "https://localhost:8080"
 
-# Mercedes-Benz Client Credentials
-client_credentials = "YTMxZTNhZmEtOTdhNS00NTJhLTkyMjktZDc2YjBiNWFhZmM2OkFVckhKaElTa01zZEpjeVdkWGhTSHJ0YmNpWVdOUWdZYUx2ZXN4UGxsbVRwd3BpcGhOdFBwUGtCenJZSGRudVY="
+# Mercedes-Benz Client Credentials in BASE64
+client_credentials = "<credentials>"
 
 # Artifact
 hazzard_artifact = "https://localhost:8080/api/artifacts/?????-????-????-????-????????????"
