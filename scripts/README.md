@@ -83,3 +83,53 @@ curl -d '{
           -H "Content-Type: application/json" 
           -X POST "<artifact_url>/data"
 ```
+
+
+#### Example Fuel Status Tryout with POST request using CURL
+
+The example below shows an example of Fuel Status POST request call which does not require authentication:
+
+
+```
+curl -d '{ "headers": { "authorization": " Bearer 7c7c777c-f123-4123-s123-7c7c777c7c77", "accept": "application/json;charset=utf-8" }, "optional": "WDB111111ZZZ22222/resources" }' -u 'user:password' -k -H "Content-Type: application/json" -X POST "<artifact_url>/data"
+```
+
+Example of reponse:
+
+```
+[
+  {
+    "name": "tanklevelpercent",
+    "version": "1.0",
+    "href": "/vehicles/WDB111111ZZZ22222/resources/tanklevelpercent"
+  },
+  {
+    "name": "rangeliquid",
+    "version": "1.0",
+    "href": "/vehicles/WDB111111ZZZ22222/resources/rangeliquid"
+  }
+]
+
+```
+
+
+
+#### Example Eletric Vehicle Status Tryout with POST request using CURL
+
+The example below shows an example of Eletric Vehicle StatusTryout which does not require authentication:
+
+```
+curl -d '{ "headers": { "authorization": "Bearer 2c2c222c-e123-4123-v123-2c2c222c2c22", "accept": "application/json;charset=utf-8" }, "optional": "WDB111111ZZZ22222/resources" }' -u 'user:password' -k -H "Content-Type: application/json" -X POST <artifact_url>/data"
+```
+
+Example of reponse:
+
+```
+[
+  { "name": "soc", "version": "1.0", "href": "/vehicles/WDB111111ZZZ22222/resources/soc" },
+  { "name": "rangeelectric", "version": "1.0", "href": "/vehicles/WDB111111ZZZ22222/resources/rangeelectric" }
+]
+```
+
+
+
