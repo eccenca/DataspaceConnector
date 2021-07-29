@@ -1,10 +1,18 @@
 
 #### Bootstraping the IDS Connector
 
-To bootstrap the three APIs in the IDS Mercedes-Benz Connector execute the ```mercedes_api_bootstrap.py``` as follows:
+To bootstrap the three APIs in the IDS Mercedes-Benz Connector replace the variable ```host``` at ```mercedes_api_connector_bootstrap.py``` by your connector address:
 
 ```
-python mercedes_api_bootstrap.py
+...
+host = "localhost:8080"
+...
+```
+
+And execute the the ```mercedes_api_connector_bootstrap.py``` script as follows:
+
+```
+python mercedes_api_connector_bootstrap.py
 ```
 
 #### Example Harzard Warnings
@@ -15,6 +23,7 @@ To be able to consume the data, you should first customize three parameters ```c
 Where the ```connectorURL``` is the url of the Mercedes-Benz IDS Connector,  the ```client_credentials``` is your Merces-Benz Hazard Warnings client credentials encoded in BASE64 and ```hazzard_artifact``` is the reference to the Hazard Warning artifact published at the Mercedes-Benz IDS Connector.
 
 ```
+...
 # Connector Address
 connectorUrl = "https://localhost:8080"
 
@@ -23,6 +32,7 @@ client_credentials = "<credentials>"
 
 # Artifact
 hazzard_artifact = "https://localhost:8080/api/artifacts/?????-????-????-????-????????????"
+...
 ```
 
 After changing these parameters, one can execute the script as follows:
