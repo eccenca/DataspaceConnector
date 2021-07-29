@@ -1,3 +1,12 @@
+
+#### Bootstraping the IDS Connector
+
+To bootstrap the three APIs in the IDS Mercedes-Benz Connector execute the ```mercedes_api_bootstrap.py``` as follows:
+
+```
+python mercedes_api_bootstrap.py
+```
+
 #### Example Harzard Warnings
 
 An example of consuming Harzard Warnings data from the connector is available under the file at ```mercedes_hazard.py```.
@@ -43,7 +52,7 @@ EO3hyHIh1vkUYzVhJgkYRyyNoVGlutcPjK4
 [9.1497507,48.726844699999994],[9.1505689,48.72676839999999]],"ts":1627528506797,"uuid":"db4b9dba-82c9-4271-97d0-4083cd42b589"},{"cancelled":true,"cause":"HL","heading":348,"location":[9.1923816,48.7236738],"trace":[[9.1925081,48.723339],[9.1924879,48.723243200000006],[9.1923763,48.72326150000001],[9.1924221,48.723319800000006]],"ts":1627500567060,"uuid":"f08edd14-6ebd-48a1-86e6-7904668086be"}]}'
 ```
 
-#### Example POST request using CURL
+#### Example Hazard Warning with POST request using CURL
 
 It is also possible to consume data from the IDS Connector using CURL.
 
