@@ -10,7 +10,7 @@ s = requests.Session()
 s.auth = ("admin", "password")
 s.verify = False
 
-host = "ids.eccenca.dev:6060"
+host = "localhost:6060"
 apis = ["https://api.mercedes-benz.com/vehicledata/v2/vehicles", "https://api.mercedes-benz.com/vehicledata/v2/vehicles" , "https://api.mercedes-benz.com/hazard_warnings/v2", "https://api.mercedes-benz.com/vehicledata_tryout/v2/vehicles", "https://api.mercedes-benz.com/vehicledata_tryout/v2/vehicles"]
 
 licenses = [["Fuel Status", "https://developer.mercedes-benz.com/products/hazard_warnings/details" ], 
