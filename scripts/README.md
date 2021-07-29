@@ -1,4 +1,4 @@
-# Example of POST request
+### Example POST request using CURL
 
 It is also possible to consume data from the IDS Connector using CURL.
 
