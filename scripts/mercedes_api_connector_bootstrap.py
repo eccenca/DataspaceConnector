@@ -7,10 +7,10 @@ import json
 requests.packages.urllib3.disable_warnings()
 
 s = requests.Session()
-s.auth = ("admin", "password")
+s.auth = ("user", "password")
 s.verify = False
 
-host = "localhost:6060"
+host = "localhost"
 apis = ["https://api.mercedes-benz.com/vehicledata/v2/vehicles", "https://api.mercedes-benz.com/vehicledata/v2/vehicles" , "https://api.mercedes-benz.com/hazard_warnings/v2", "https://api.mercedes-benz.com/vehicledata_tryout/v2/vehicles", "https://api.mercedes-benz.com/vehicledata_tryout/v2/vehicles"]
 
 licenses = [["Fuel Status", "https://developer.mercedes-benz.com/products/hazard_warnings/details" ], 
@@ -138,13 +138,13 @@ def create_policy(title, desc):
             "@id": "http://w3id.org/idsa/autogen/permission/c0bdb9d5-e86a-4bb3-86d2-2b1dc9d226f5",
             "ids:description": [
               {{
-                "@value": "{desc}",
-                "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML"
+                "@value": "This polcy allows the usage of the API under the respective ",
+                "@type": "http://www.w3.org/2001/XMLSchema#string"
               }}
             ],
             "ids:title": [
               {{
-                "@value": "{title}",
+                "@value": "Free for usage",
                 "@type": "http://www.w3.org/2001/XMLSchema#string"
               }}
             ],
@@ -152,46 +152,45 @@ def create_policy(title, desc):
               {{
                 "@id": "idsc:USE"
               }}
-            ],
-            "ids:postDuty": [
-              {{
-                "@type": "ids:Duty",
-                "@id": "http://w3id.org/idsa/autogen/duty/863d2fac-1072-476d-b504-9d6347fe4b6f",
-                "ids:action": [
-                  {{
-                    "@id": "idsc:NOTIFY"
-                  }}
-                ],
-                "ids:constraint": [
-                  {{
-                    "@type": "ids:Constraint",
-                    "@id": "http://w3id.org/idsa/autogen/constraint/c91e64ce-1fc1-44fd-bec1-6c6778603919",
-                    "ids:rightOperand": {{
-                      "@value": "http://localhost:6060/api/ids/data",
-                      "@type": "http://www.w3.org/2001/XMLSchema#anyURI"
-                    }},
-                    "ids:leftOperand": {{
-                      "@id": "idsc:ENDPOINT"
-                    }},
-                    "ids:operator": {{
-                      "@id": "idsc:DEFINES_AS"
-                    }}
-                  }}
-                ]
-              }}
             ]
           }}'''
+
+    svalue = {
+          "value": """{
+          "@context" : {
+              "ids" : "https://w3id.org/idsa/core/",
+              "idsc" : "https://w3id.org/idsa/code/"
+          },
+        "@type": "ids:Permission",
+        "@id": "https://w3id.org/idsa/autogen/permission/154df1cf-557b-4f44-b839-4b68056606a2",
+        "ids:description": [
+          {
+            "@value": "Free for Usage",
+            "@type": "http://www.w3.org/2001/XMLSchema#string"
+          }
+        ],
+        "ids:title": [
+          {
+            "@value": "This policy allows the data set usage by any third-party under the restrictions pre-established by the data provider Mercedes-Benz.",
+            "@type": "http://www.w3.org/2001/XMLSchema#string"
+          }
+        ],
+        "ids:action": [
+          {
+            "@id": "idsc:USE"
+          }
+        ]
+      }"""
+    }
     parsedJSON = json.loads(value)
     return s.post(
         "https://" + host + "/api/rules",
-        json={
-            "value": value
-        }
+        json=svalue
     ).headers["Location"]
 
-def get_catalogs():
+def get_objects(object):
     return s.get(
-        "https://" + host + "/api/catalogs?page=0&size=30"
+        "https://" + host + "/api/" + object + "s?page=0&size=30"
     )
 
 def create_remote_artifact(endpoint):
@@ -235,33 +234,60 @@ def create_contract():
 def create_catalog():
     return s.post("https://" + host + "/api/catalogs", json={}).headers["Location"]
 
-def remove_offer(offer_href):
-    return s.delete(offer_href)
+def remove(object_href):
+    return s.delete(object_href)
 
-# Cleaning current offers
+def remove_uuid(offer_href, uuid):
+    return s.delete(offer_href, json={'id' : uuid})
 
-current_offers_response = get_catalogs()
-current_catalogs = json.loads(current_offers_response.text)
-for current_catalog in current_catalogs["_embedded"]["catalogs"]:
-    offer_href = current_catalog["_links"]["self"]["href"]
-    print("Removing catalog " + offer_href)
-    remove_offer(offer_href)
+def remove(object, objects):
+  current_objects = json.loads(objects.text)
+  for current_object in current_objects["_embedded"][object + 's']:
+    object_href = current_object["_links"]["self"]["href"]
+    print("Removing " + object + " " + object_href)
+    remove(object_href)
+
+def remove_object_uuid(object, objects):
+  current_objects = json.loads(objects.text)
+  for current_object in current_objects["_embedded"][object + 's']:
+    object_href = current_object["_links"]["self"]["href"]
+    print("Removing " + object + " " + object_href)
+    uuid = object_href.rindex("/",1)
+    remove_uuid(object_href, uuid)
+
+# Cleaning dataset
+
+object_response = get_objects("catalog")
+remove_object_uuid("catalog", object_response)
+
+object_response = get_objects("offer")
+remove_object_uuid("resource", object_response)
+
+object_response = get_objects("artifact")
+remove_object_uuid("artifact", object_response)
+
+object_response = get_objects("representation")
+remove_object_uuid("representation", object_response)
+
+object_response = get_objects("contract")
+remove_object_uuid("contract", object_response)
 
 i = 0
 catalog = create_catalog()
+policy = create_policy(licenses[i][0] + " Usage Policy", "For more details visit " + licenses[i][1])
+contract = create_contract()
+
 print("Adding APIS to IDS Catalog:" + catalog)
 for api in apis:    
     offer = create_offered_resource(offers[i])
     representation = create_representation(representations[i])
     artifact = create_remote_artifact(api)
-    contract = create_contract()
-    notification_rule = create_policy(licenses[i][0] + " Usage Policy", "For more details visit " + licenses[i][1])
 
     add_resource_to_catalog(catalog, offer)
     add_representation_to_resource(offer, representation)
     add_artifact_to_representation(representation, artifact)
     add_contract_to_resource(offer, contract)
-    add_rule_to_contract(contract, notification_rule)
+    add_rule_to_contract(contract, policy)
 
     print("Registering " + licenses[i][0]  + " in " + artifact )
     i = i + 1

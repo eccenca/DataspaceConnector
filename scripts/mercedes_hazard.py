@@ -14,9 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-from resourceapi import ResourceApi
-from idsapi import IdsApi
 import requests
 import pprint
 import json
