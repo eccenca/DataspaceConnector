@@ -49,14 +49,14 @@ You can request a <b>IP Unblockage</b> or <b>connection</b> allowance writing to
 
 | Broker | Web Interface | Connection Address | Requires IP Unblockage | Version | Model Compatibility | Mantainer | Contact |
 | ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Mobility Dataspace | https://broker.mobilitydataspace.io/browse | https://ids.mobilitydataspace.io/infrastructure |  YES | ? | ? |Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de |
+| Mobility Dataspace | https://broker.mobilitydataspace.io/browse | https://ids.mobilitydataspace.io/infrastructure |  NO | ? | ? |Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de |
 | IDS Metadata Broker | https://broker.ids.isst.fraunhofer.de/browse | https://broker.ids.isst.fraunhofer.de/infrastructure |  YES | ? | ? | Fraunhofer ISST | info@dataspace-connector.de |
 
 ## Test Deployment
 
 Broker | Web Interface | Connection Address | Requires IP Unblockage | Version | Model Compatibility | Mantainer | Contact
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
-Test Mobility Dataspace | https://broker.test.mobilitydataspace.io/browse | https://ids.broker.test.mobilitydataspace.io/infrastructure | YES | ? | ? | Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de 
+Test Mobility Dataspace | https://broker.test.mobilitydataspace.io/browse | https://ids.broker.test.mobilitydataspace.io/infrastructure | NO | ? | ? | Fraunhofer IVI | sebastian.lorenz@ivi.fraunhofer.de 
 
 # Infrastructure & Contacts 
 
