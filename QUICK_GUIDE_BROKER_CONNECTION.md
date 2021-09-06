@@ -14,7 +14,11 @@ There are three steps for connecting to an IDS Broker: (1) request and register 
 
 The communication between the different IDS components is performed using a secure communication channel. 
 To be able to either connect or transfer data between an IDS component one may request a trusted key to the IDS Consortium.
-To do so, you may contact 
+To do so, you may contact:
+
+### Mobility Dataspace:
+
+Contact Gerd Brost (dataspaces.fraunhofer.de/de/software/identity_provider.html) by email adding URL of the connector, your company name and an email address, that is used to mail the certificate to.
 
 ## 2nd - Configuring an IDS Connector with a trusted key and Connector ID
 
